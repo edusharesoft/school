@@ -1,0 +1,17 @@
+# ---------------------------------------------------------------------------
+# Live-server helper: used ONLY when the domain's Document Root points to this
+# project folder (not to /public). Every request is sent into /public, so
+# .env, vendor, storage, the .sql dump etc. can never be opened from a browser.
+# If the Document Root already points to /public, this file is never read.
+# ---------------------------------------------------------------------------
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Login / registration pages — same look as the Multi-Branch eCommerce platform:
+   full-screen photo (set in Settings) + dark overlay, centred white card,
+   logo + title on top, YouTube video on the left, form on the right.
+   ========================================================================== */
+body.auth-ui { min-height: 100vh; margin: 0; font-family: 'Roboto', 'Poppins', 'Hind Siliguri', sans-serif; color: #1f2937; background: #1f2937; }
+.au-bg { position: fixed; inset: 0; z-index: 0; background: var(--au-img, linear-gradient(135deg, #1e3a8a 0%, #6d28d9 55%, #db2777 100%)) center / cover no-repeat; }
+.au-bg::after { content: ''; position: absolute; inset: 0; background: rgba(17, 24, 39, var(--au-dim, .45)); }
+.au-wrap { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px 14px 24px; }
+
+.au-card { background: #fff; border-radius: 8px; box-shadow: 0 18px 50px rgba(0, 0, 0, .35); width: 100%; max-width: 640px; padding: 26px 16px 22px; }
+.au-card.solo { max-width: 460px; padding: 26px 26px 24px; }
+.au-card.wide { max-width: 940px; }
+.au-card.wide.no-media { max-width: 680px; } // long form (registration) without a video column
+.au-head { text-align: center; margin-bottom: 18px; }
+.au-head .au-logo { max-height: 62px; max-width: 240px; object-fit: contain; }
+.au-head .au-name { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, #0ea5e9, #f97316); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
+.au-head .au-name i { color: #0ea5e9; -webkit-text-fill-color: #0ea5e9; }
+.au-head .au-title { font-size: 17px; color: #374151; margin-top: 4px; }
+.au-head .au-sub { font-size: 12.5px; color: #6b7280; margin-top: 2px; }
+
+.au-media { position: relative; width: 100%; aspect-ratio: 16 / 12; border-radius: 4px; overflow: hidden; background: #111827; box-shadow: 0 2px 6px rgba(0, 0, 0, .18);
+    cursor: pointer; border: 0; padding: 0; display: block; }
+.au-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+.au-media:hover img { transform: scale(1.04); }
+.au-media .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 78px; height: 54px; border-radius: 14px; background: #ff0000;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
+.au-media .play::after { content: ''; border-style: solid; border-width: 12px 0 12px 20px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.au-media iframe { width: 100%; height: 100%; border: 0; display: block; }
+.au-card.wide .au-media { aspect-ratio: auto; height: 100%; min-height: 320px; }
+
+.au-form .au-field { display: flex; align-items: stretch; border: 1px solid #dfe3ea; border-radius: 4px; background: #fff; margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .06); transition: border-color .15s, box-shadow .15s; }
+.au-form .au-field:focus-within { border-color: #8b87e0; box-shadow: 0 0 0 3px rgba(139, 135, 224, .18); }
+.au-form .au-field.is-invalid { border-color: #ef4444; }
+.au-form .au-field .ic { width: 50px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #f7f8fa; border-right: 1px solid #dfe3ea; color: #4b5563; font-size: 16px; }
+.au-form .au-field input, .au-form .au-field textarea, .au-form .au-field select { flex: 1; min-width: 0; border: 0; outline: 0; padding: 10px 12px; font-size: 14px; background: transparent; color: #111827; }
+.au-form .au-field textarea { resize: vertical; min-height: 64px; }
+.au-form .au-field .pre, .au-form .au-field .post { display: flex; align-items: center; padding: 0 10px; font-size: 12.5px; color: #6b7280; white-space: nowrap; }
+.au-form .au-field .pre { padding-right: 0; }
+.au-form .au-field .eye { border: 0; background: transparent; color: #4b5563; padding: 0 12px; font-size: 15px; }
+.au-form .au-err { color: #dc2626; font-size: 12px; margin: -8px 0 10px 2px; }
+.au-form .au-help { font-size: 11.5px; color: #6b7280; margin: -8px 0 10px 2px; }
+.au-form .form-check-label { font-size: 13.5px; }
+.au-btn { display: block; width: 100%; border: 0; border-radius: 4px; padding: 9px 12px; font-size: 16px; font-weight: 500; background: #c9c7ee; color: #111827; transition: background .15s, box-shadow .15s; }
+.au-btn:hover { background: #b4b1e8; box-shadow: 0 4px 12px rgba(99, 102, 241, .25); }
+.au-btn-2 { display: block; width: 100%; text-align: center; border: 1px solid #dfe3ea; border-radius: 4px; padding: 6px 12px; font-size: 14px; color: #111827; background: #fff; text-decoration: none; margin-top: 10px; }
+.au-btn-2:hover { background: #f5f5fb; color: #111827; }
+.au-links { text-align: center; font-size: 13px; color: #6b7280; margin-top: 12px; }
+.au-links a { color: #4f46e5; font-weight: 500; }
+.au-note { background: #f5f7ff; border: 1px dashed #c7d2fe; border-radius: 6px; padding: 8px 10px; font-size: 12px; color: #374151; margin-top: 12px; }
+.au-foot { margin-top: 22px; color: #fff; font-size: 15px; font-weight: 600; text-shadow: 0 1px 3px rgba(0, 0, 0, .6); text-align: center; }
+.au-top { position: absolute; top: 14px; right: 16px; z-index: 2; display: flex; gap: 10px; align-items: center; font-size: 13px; }
+.au-top a { color: #fff; text-decoration: none; background: rgba(0, 0, 0, .25); padding: 4px 10px; border-radius: 20px; }
+.au-top a:hover, .au-top a.active { background: rgba(0, 0, 0, .45); }
+
+@media (max-width: 767px) {
+    .au-card, .au-card.wide { padding: 20px 14px; }
+    .au-media, .au-card.wide .au-media { aspect-ratio: 16 / 9; min-height: 0; height: auto; }
+}
